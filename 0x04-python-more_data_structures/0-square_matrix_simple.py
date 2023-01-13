@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 def square(num):
-    return num ** 2
+    return num**2
+
 
 def square_matrix_simple(matrix=[]):
     new_matrix = []
