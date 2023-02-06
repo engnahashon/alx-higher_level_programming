@@ -1,0 +1,2 @@
+#!/bin/bash
+for file in *.py; do echo "#!/usr/bin/python3" | cat - $file > temp && mv temp $file; done
