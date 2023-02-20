@@ -1,32 +1,58 @@
 #!/usr/bin/python3
-class Square():
-    """ A square class """
+"""A class Square that defines a square"""
+
+
+class Square:
+    """Module of a square
+    Attributes:
+        __size (int): Describes the length of a square
+    """
     def __init__(self, size=0):
-        """ Initializing class """
-        self.__size = size
+        """Initializes the square attributes
+        Args:
+            size (int): Describes the length of a square
+        Returns:
+            None
+        """
+        self.size = size
+
+    def area(self):
+        """Calculates area of a square
+        Returns:
+            the current square area
+        """
+        return (f"{self.__size*self.__size}")
+
+    def my_print(self):
+        """Prints in stdout the square with the character #
+        Returns:
+            None
+        """
+        if self.__size == 0:
+            print()
+            return
+        for i in range(self.__size):
+            print("".join(["#" for j in range(self.__size)]))
 
     @property
     def size(self):
-        """ Property size """
-        return self.__size
+        """getting the size
+        Returns:
+            the length of a square
+        """
+        return(self.__size)
 
     @size.setter
     def size(self, value):
-        """ property setter size """
-        if not isinstance(value, int):
+        """setting the size
+        Args:
+            value (int): Describes the length of a square
+        Returns:
+            None
+        """
+        if type(value) is not int:
             raise TypeError("size must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("size must be >= 0")
-        self.__size = value
-
-    def area(self):
-        """ Initializing area calc """
-        return self.__size * self.__size
-
-    def my_print(self):
-        """ Initializing printing square """
-        if self.__size <= 0:
-            print()
-
         else:
-            print(((("#" * self.__size) + '\n') * self.__size), end="")
+            self.__size = value

@@ -33,7 +33,6 @@ class Square:
         """
         if self.__size == 0:
             print()
-            return
         for i in range(self.__position[1]):
             print()
         for j in range(self.__size):
@@ -85,3 +84,14 @@ class Square:
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = value
+
+    def __str__(self):
+        """Represents the Square objects as a string
+        Returns:
+            the representing string
+        """
+        if self.size == 0:
+            return ("")
+        string = "\n" * self.position[1] + (" " * self.position[0] +
+                                            "#" * self.size + "\n") * self.size
+        return (string[:-1])
