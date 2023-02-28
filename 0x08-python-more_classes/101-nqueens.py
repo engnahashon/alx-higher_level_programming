@@ -5,15 +5,17 @@ import sys
 def nqueens(N):
     # Initialize empty board with 0's
     board = [[0 for x in range(N)] for y in range(N)]
+    solutions = []
     # Recursive helper function
     def solve(board, col):
-        # Base case: if all queens are placed, print solution
+        # Base case: if all queens are placed, add solution
         if col == N:
+            queens = []
             for i in range(N):
                 for j in range(N):
-                    print(board[i][j], end=" ")
-                print()
-            print()
+                    if board[i][j] == 1:
+                        queens.append((i, j))
+            solutions.append(queens)
             return True
         # Check each row in the current column
         for i in range(N):
@@ -47,6 +49,19 @@ def nqueens(N):
 
     # Call recursive function on first column
     solve(board, 0)
+
+    # Print solutions in desired format
+    for queens in solutions:
+        solution = []
+        for i in range(N):
+            row = []
+            for j in range(N):
+                if (i, j) in queens:
+                    row.append(1)
+                else:
+                    row.append(0)
+            solution.append(row)
+        print(solution)
 
 # Check if program was called with the correct number of arguments
 if len(sys.argv) != 2:
