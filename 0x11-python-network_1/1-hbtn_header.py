@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-
-
-"""Module that displays the value of the X-Request-Id variable."""
+"""
+Module that displays the value of the X-Request-Id variable.
+"""
 
 
 import sys
