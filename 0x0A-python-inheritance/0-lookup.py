@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Python module to list all the attributes"""
 
 
 def lookup(obj):
