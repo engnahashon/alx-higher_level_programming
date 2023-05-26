@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Python script for task 0"""
 
 
 def read_file(filename=""):
