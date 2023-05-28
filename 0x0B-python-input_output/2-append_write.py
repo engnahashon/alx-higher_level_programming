@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-"""Python module for task 2"""
-
-
 def write_file(filename="", text=""):
     """
     function that appends a string at the end of a text file
@@ -9,4 +6,3 @@ def write_file(filename="", text=""):
     """
     with open(filename, 'a', encoding='utf-8') as f:
         return (f.write(text))
-        
