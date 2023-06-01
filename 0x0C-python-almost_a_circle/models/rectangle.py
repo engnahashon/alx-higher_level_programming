@@ -60,7 +60,22 @@ class Rectangle(Base):
     def y(self, value):
         if not isinstance(value, int):
             raise TypeError('y must be an integer')
-        if value < 0:
+        elif value < 0:
             raise ValueError('y must be >= 0')
         else:
             self.__y = value
+
+    def area(self):
+        """returns the area value of the Rectangle instance"""
+        return(self.height*self.width)
+
+    def display(self):
+        """prints in stdout the Rectangle instance with the character #"""
+        for i in range(self.height):
+            for j in range(self.width):
+                print('#', end="")
+            print()
+
+    def __str__(self):
+        """returns [Rectangle] (<id>) <x>/<y> - <width>/<height>"""
+        return('[Rectangle] ({}) {}/{} - {}/{}'.format(self.id, self.x, self.y, self.width, self.height))
