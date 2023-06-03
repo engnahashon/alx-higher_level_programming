@@ -89,8 +89,7 @@ class Base:
             for obj in list_objs:
                 values = [getattr(obj, attr) for attr in fieldnames]
                 writer.writerow(values)
-                
-    
+
     @classmethod
     def load_from_file_csv(cls):
         """deserializes in CSV"""
