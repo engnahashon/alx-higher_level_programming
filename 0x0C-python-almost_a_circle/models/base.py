@@ -97,14 +97,14 @@ class Base:
         filename = cls.__name__ + '.csv'
         instance_list = []
         try:
-            with open(filename, 'r', newline='') as f:
+            with open(filename, 'r') as f:
                 reader = csv.reader(f)
                 header = next(reader)
 
-            for row in reader:
-                instance_dict = dict(zip(header, row))
-                instance = cls.create(**instance_dict)
-                instance_list.append(instance)
+                for row in reader:
+                    dictionary = dict(zip(header, map(int, row)))
+                    instance = cls.create(**dictionary)
+                    instance_list.append(instance)
 
         except FileNotFoundError:
             return []
