@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Base Module for project 0x0C. Python - Almost a circle"""
+import csv
 import json
 
 
@@ -67,6 +68,43 @@ class Base:
                 for obj in obj_list:
                     instance = cls.create(**obj)
                     instance_list.append(instance)
+
+        except FileNotFoundError:
+            return []
+
+        return instance_list
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """serializes in CSV"""
+        filename = cls.__name__ + '.csv'
+        with open(filename, 'w', newline='') as f:
+            writer = csv.writer(f)
+            if cls.__name__ == "Rectangle":
+                fieldnames = ['id', 'width', 'height', 'x', 'y']
+            elif cls.__name__ == "Square":
+                fieldnames = ['id', 'size', 'x', 'y']
+            writer.writerow(fieldnames)
+
+            for obj in list_objs:
+                values = [getattr(obj, attr) for attr in fieldnames]
+                writer.writerow(values)
+                
+    
+    @classmethod
+    def load_from_file_csv(cls):
+        """deserializes in CSV"""
+        filename = cls.__name__ + '.csv'
+        instance_list = []
+        try:
+            with open(filename, 'r', newline='') as f:
+                reader = csv.reader(f)
+                header = next(reader)
+
+            for row in reader:
+                instance_dict = dict(zip(header, row))
+                instance = cls.create(**instance_dict)
+                instance_list.append(instance)
 
         except FileNotFoundError:
             return []
