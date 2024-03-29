@@ -2,5 +2,5 @@
 let logno = 0;
 exports.logMe = function (item) {
   logno++;
-  console.log('${count - 1}: ${item}');
+  console.log(`${logno - 1}: ${item}`);
 };
